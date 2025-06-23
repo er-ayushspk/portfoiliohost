@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found | Oops</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #fff;
+            color: #222;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .notfound-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            gap: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .notfound-emoji {
+            font-size: 5rem;
+            animation: float 2.5s ease-in-out infinite, shake 6s infinite;
+            user-select: none;
+            filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.08));
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-18px);
+            }
+        }
+        
+        @keyframes shake {
+            0%,
+            100% {
+                rotate: 0deg;
+            }
+            10% {
+                rotate: 6deg;
+            }
+            20% {
+                rotate: -6deg;
+            }
+            30% {
+                rotate: 3deg;
+            }
+            40% {
+                rotate: -3deg;
+            }
+            50% {
+                rotate: 0deg;
+            }
+        }
+        
+        .notfound-title {
+            font-size: 7rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            color: #111;
+            margin: 0;
+            line-height: 1;
+            position: relative;
+            animation: popIn 1s cubic-bezier(.68, -0.55, .27, 1.55);
+            text-shadow: 0 2px 24px #eee;
+        }
+        
+        @keyframes popIn {
+            0% {
+                transform: scale(0.7) rotate(-10deg);
+                opacity: 0;
+            }
+            80% {
+                transform: scale(1.1) rotate(2deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+        
+        .notfound-message {
+            font-size: 1.5rem;
+            color: #444;
+            max-width: 520px;
+            margin: 0 auto;
+            font-weight: 500;
+            animation: fadeInUp 1.2s 0.3s both;
+        }
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .notfound-sub {
+            font-size: 1.1rem;
+            color: #888;
+            margin-top: 0.7rem;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fadeInUp 1.5s 0.7s both;
+        }
+        
+        .notfound-btn {
+            display: inline-block;
+            padding: 1em 2.5em;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            background: #111;
+            border: none;
+            border-radius: 2em;
+            box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.09);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            animation: bounceIn 1.2s 1s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .notfound-btn::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.08);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .notfound-btn:hover {
+            background: #222;
+            transform: translateY(-2px) scale(1.05) rotate(-1deg);
+            box-shadow: 0 6px 32px 0 rgba(0, 0, 0, 0.13);
+        }
+        
+        .notfound-btn:active::after {
+            opacity: 1;
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.7) translateY(40px);
+                opacity: 0;
+            }
+            80% {
+                transform: scale(1.1) translateY(-8px);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .notfound-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .notfound-bg-dot {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #f2f2f2;
+            opacity: 0.7;
+            animation: dotMove 7s infinite linear;
+        }
+        
+        .notfound-bg-dot:nth-child(1) {
+            left: 10vw;
+            top: 20vh;
+            animation-delay: 0s;
+        }
+        
+        .notfound-bg-dot:nth-child(2) {
+            left: 80vw;
+            top: 30vh;
+            animation-delay: 1.2s;
+        }
+        
+        .notfound-bg-dot:nth-child(3) {
+            left: 50vw;
+            top: 80vh;
+            animation-delay: 2.4s;
+        }
+        
+        .notfound-bg-dot:nth-child(4) {
+            left: 30vw;
+            top: 60vh;
+            animation-delay: 3.6s;
+        }
+        
+        .notfound-bg-dot:nth-child(5) {
+            left: 70vw;
+            top: 10vh;
+            animation-delay: 4.8s;
+        }
+        
+        @keyframes dotMove {
+            0% {
+                transform: scale(1) translateY(0);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.3) translateY(-30px);
+                opacity: 0.4;
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 0.7;
+            }
+        }
+        
+        .notfound-quote {
+            font-size: 1.05rem;
+            color: #bbb;
+            margin-top: 2.5rem;
+            font-style: italic;
+            animation: fadeInUp 1.7s 1.2s both;
+            letter-spacing: 0.01em;
+        }
+        
+        @media (max-width: 600px) {
+            .notfound-title {
+                font-size: 4rem;
+            }
+            .notfound-message {
+                font-size: 1.1rem;
+            }
+            .notfound-bg-dot {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="notfound-bg">
+        <div class="notfound-bg-dot"></div>
+        <div class="notfound-bg-dot"></div>
+        <div class="notfound-bg-dot"></div>
+        <div class="notfound-bg-dot"></div>
+        <div class="notfound-bg-dot"></div>
+    </div>
+    <div class="notfound-container">
+        <div class="notfound-emoji" id="face">🥲</div>
+        <h1 class="notfound-title">404</h1>
+        <div class="notfound-message">
+            You found a page that doesn't exist. <br> Honestly, same. I can't find my motivation either.<br>
+            <span class="notfound-sub">(Maybe you typed the wrong URL, or maybe the universe is just trolling you. Who knows?)</span>
+        </div>
+        <a href="index.html" class="notfound-btn">Go Home &amp; Pretend This Never Happened</a>
+        <div class="notfound-quote">"404: Motivation Not Found"</div>
+    </div>
+    <script>
+        // Animate the emoji face to blink occasionally for extra relatability
+        const face = document.getElementById('face');
+        setInterval(() => {
+            face.textContent = Math.random() > 0.7 ? '😑' : '🥲';
+        }, 1800);
+    </script>
+</body>
+
+</html>
