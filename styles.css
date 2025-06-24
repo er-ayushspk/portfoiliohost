@@ -2151,9 +2151,6 @@ ul.example-2 {
     }
 }
 
-
-/* -- New Starfield Animation -- */
-
 #star-field {
     position: fixed;
     width: 100%;
@@ -2221,4 +2218,4 @@ body.dark-mode .time-display {
 
 body.dark-mode .progress-bar {
     background: rgba(255, 255, 255, 0.2);
-}   
+}

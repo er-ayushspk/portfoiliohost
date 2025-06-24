@@ -1,9 +1,8 @@
-/* Preloader Grid Generation */
 document.addEventListener('DOMContentLoaded', () => {
     const gridLoader = document.getElementById('grid-loader');
     if (gridLoader) {
-        // Calculate the number of blocks needed to fill the screen
-        const blockSize = 50; // Corresponds to minmax(50px, 1fr) in CSS
+
+        const blockSize = 50;
         const screenWidth = window.innerWidth;
         const screenHeight = window.innerHeight;
         const numCols = Math.ceil(screenWidth / blockSize);
@@ -54,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     applyTheme(savedTheme || preferredTheme);
 
-    /* Typewriter Effect */
+
     const heroTitle = document.querySelector('#hero-title');
     if (heroTitle) {
         new TypeIt(heroTitle, {
@@ -70,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .go();
     }
 
-    /* Scroll Reveal Animation */
+
     const sr = ScrollReveal({
         distance: '60px',
         duration: 2000,
@@ -88,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sr.reveal('.contact-form', { origin: 'right' });
     sr.reveal('.footer-container', { origin: 'bottom' });
 
-    // Change title on tab visibility
+
     const originalTitle = document.title;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
@@ -135,13 +134,13 @@ function createStars(numStars = 100) {
         star.style.width = `${size}px`;
         star.style.height = `${size}px`;
 
-        // Start star on the left, at a random vertical position
-        star.style.top = `${Math.random() * 100}%`;
-        star.style.left = '-10px'; // Start just off-screen
 
-        const duration = 10 + Math.random() * 15; // Animation duration between 10s and 25s
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = '-10px';
+
+        const duration = 10 + Math.random() * 15;
         star.style.animationDuration = `${duration}s`;
-        star.style.animationDelay = `${Math.random() * 20}s`; // Stagger the start
+        star.style.animationDelay = `${Math.random() * 20}s`;
 
         starField.appendChild(star);
     }
@@ -161,7 +160,7 @@ function destroyParticles() {
     }
 }
 
-/* Particle Animation */
+
 function initParticles() {
     destroyParticles();
 
@@ -182,15 +181,13 @@ function initParticles() {
         "retina_detect": true
     };
     if (window.particlesJS) {
-        if (window.pJSDom && window.pJSDom.length > 0) {
-            // Do nothing if particles are already initialized for light mode
-        } else {
+        if (window.pJSDom && window.pJSDom.length > 0) {} else {
             particlesJS('particles-js', particleConfig);
         }
     }
 }
 
-/* Music Player Functionality */
+
 document.addEventListener('DOMContentLoaded', () => {
     const musicPlayer = document.getElementById('musicPlayer');
     const musicCard = document.getElementById('musicCard');
